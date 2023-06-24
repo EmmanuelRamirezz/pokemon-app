@@ -1,12 +1,9 @@
-import { useState } from 'react'
-
+import AppRouter from "../AppRouter"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1 className='text-red-500'>Hola pokemon</h1>
+     <AppRouter/>
     </>
   )
 }

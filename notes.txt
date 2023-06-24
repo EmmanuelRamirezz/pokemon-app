@@ -1,0 +1,6 @@
+Inicializar el proyecto con tailwind y vide
+Limpiar el proyecto
+Subirlo a un repostorio remoto
+Instalar:
+npm i react-router-dom@6
+npm install @uiball/loaders
