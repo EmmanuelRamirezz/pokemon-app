@@ -1,14 +1,20 @@
 import { Outlet, Link } from "react-router-dom";
 import pokemonLogo from "../assets/Pokemon_logo.svg"
+import { useContext } from "react";
+import { PokemonContext } from "../context/PokemonContext";
 
 const Navigation = () => {
+  const context = useContext(PokemonContext)
+  console.log(context);
   return (
     <>
       <header className="flex justify-between px-20 h-24 items-center max-md:flex-col max-md:gap-5">
-        <Link>
+        <Link to = '/'>
           <img src={pokemonLogo} alt="Pokemon Logo" className="w-44"/>
         </Link>
-        <form action="" className="flex justify-between  w-[500px] gap-2 items-center max-md:flex-col max-md:w-80 max-md:gap-5">
+        <form 
+       // onSubmit=onSearchSubmit  
+        className="flex justify-between  w-[500px] gap-2 items-center max-md:flex-col max-md:w-80 max-md:gap-5">
           <div className="flex items-center rounded-full border-2 border-sky-600 pr-4 py-1 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
