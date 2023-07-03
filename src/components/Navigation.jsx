@@ -4,8 +4,8 @@ import { useContext } from "react";
 import { PokemonContext } from "../context/PokemonContext";
 
 const Navigation = () => {
-  const context = useContext(PokemonContext)
-  console.log(context);
+  const {numero} = useContext(PokemonContext)
+  console.log(numero); //destructuracion de un objeto
   return (
     <>
       <header className="flex justify-between px-20 h-24 items-center max-md:flex-col max-md:gap-5">
