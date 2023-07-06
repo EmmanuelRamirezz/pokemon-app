@@ -90,6 +90,7 @@ const PokemonProvider = ({children}) => {
       globalPokemons,
       getPokemonByID, 
       //el valor es un objeto (diccionario)
+      //Muchos contextos en un objeto
     }}>
       {children}
     </PokemonContext.Provider>
