@@ -14,7 +14,7 @@ const PokemonProvider = ({children}) => {
   //Cargar
   const [loading, setLoading] = useState(true)
   //Filtrar
-  const [activem, setActive] = useState(false)
+  const [active, setActive] = useState(false)
 
   //Creamos y utilizamos un custom hook
   const {valueSearch, onInputChange, onResetForm} = useForm ({
@@ -73,13 +73,59 @@ const PokemonProvider = ({children}) => {
   //El llamado en si a los 50 pokemones
   useEffect(() => {
     getAllPokemons()
-  },[])
+  },[offset])
+  //cada vez que offset cambie entonces haz otro llamado 
 
   //El llamado en si a todos los pokemones
   useEffect(() => {
     getGlobalPokemons()
   }, [])
 
+  //BTN CARGAR MÁS
+  const onClickLoadMore = () => {
+    setOffset(offset + 50)
+  }
+  //Funciones para el filtro
+  const [typeSelected, setTypeSelected] = useState({
+    grass: false,
+		normal: false,
+		fighting: false,
+		flying: false,
+		poison: false,
+		ground: false,
+		rock: false,
+		bug: false,
+		ghost: false,
+		steel: false,
+		fire: false,
+		water: false,
+		electric: false,
+		psychic: false,
+		ice: false,
+		dragon: false,
+		dark: false,
+		fairy: false,
+		unknow: false,
+		shadow: false,
+  })
+  const [filteredPokemons, setFilteredPokemons] = useState([])
+
+  const handleCheckBox = (event) => {
+    setTypeSelected({
+      ...typeSelected, //lo esparsimos
+      [event.target.name]: event.target.checked //propiedad computada
+    })
+    if(event.target.checked){
+      const filteredResults = globalPokemons.filter(pokemon => pokemon.types.map(type => type.type.name).includes(event.target.name))
+      
+      setFilteredPokemons([...filteredPokemons, ...filteredResults]) //esparsimos ambos arreglos en 1, aplica los resultados en varios checkbox seleccionados a la vez
+    }else{
+      const filteredResults = filteredPokemons.filter(pokemon => !pokemon.types.map(type => type.type.name).includes(event.target.name))   
+      setFilteredPokemons([...filteredResults])
+      //aplica el else cuando se deselecciona alguna casilla. hace que las demas casillas sigan funcionando
+      //devuelve todos los pokemones que no pertenecen al de la casilla seleccionada
+    }
+  }
 
   return(
     <PokemonContext.Provider value = {{
@@ -89,6 +135,18 @@ const PokemonProvider = ({children}) => {
       allPokemons,
       globalPokemons,
       getPokemonByID, 
+      onClickLoadMore,
+      //loader
+      setLoading,
+      loading,
+      //btn open/closa filter
+      active,
+      setActive,
+      //filter functions
+      handleCheckBox,
+      filteredPokemons,
+
+
       //el valor es un objeto (diccionario)
       //Muchos contextos en un objeto
     }}>

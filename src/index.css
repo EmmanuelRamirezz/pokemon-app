@@ -9,3 +9,46 @@ input[type="search"]::-webkit-search-cancel-button {
 textarea:focus, input:focus{
   outline: none;
 }
+
+.grass{
+  background-color: #37C331;
+}
+.poison{
+  background-color: #7E2BB2;
+}
+.fire{
+  background-color: #E64545;
+}
+.water{
+  background-color: #2F83BC;
+}
+.bug{
+  background-color: #B28A23;
+}
+.flying{
+  background-color: #A09F9E;
+}
+.normal{
+  background-color: #D13C95;
+}
+.electric{
+  background-color: #ECC401;
+}
+.ground{
+  background-color: #CC943B;
+}
+.fairy{
+  background-color: #D448DC;
+}
+.psychic{
+  background-color: #e5239b;
+}
+.fighting{
+  background-color: #921a08;
+}
+.shadow{
+  background-color: #626262;
+}
+.unknow{
+  background-color: #bfbfbf;
+}
