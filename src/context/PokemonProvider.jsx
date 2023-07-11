@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { useForm } from "../hook/useForm";
 
 const PokemonProvider = ({children}) => {
-  //Guarda todos lo pokemones
+  //Guarda la visualización
+  const [vista, setVista] = useState(false);
+  //Guarda todos los pokemones
   const [globalPokemons, setGlobalPokemons] = useState([])
   //Guarfa los primeros 50 pokemones
   const [allPokemons, setAllPokemons] = useState([]);
@@ -119,6 +121,7 @@ const PokemonProvider = ({children}) => {
       const filteredResults = globalPokemons.filter(pokemon => pokemon.types.map(type => type.type.name).includes(event.target.name))
       
       setFilteredPokemons([...filteredPokemons, ...filteredResults]) //esparsimos ambos arreglos en 1, aplica los resultados en varios checkbox seleccionados a la vez
+      console.log(filteredResults);
     }else{
       const filteredResults = filteredPokemons.filter(pokemon => !pokemon.types.map(type => type.type.name).includes(event.target.name))   
       setFilteredPokemons([...filteredResults])
@@ -145,6 +148,9 @@ const PokemonProvider = ({children}) => {
       //filter functions
       handleCheckBox,
       filteredPokemons,
+      //vistas
+      vista,
+      setVista,
 
 
       //el valor es un objeto (diccionario)

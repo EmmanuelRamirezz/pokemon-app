@@ -52,3 +52,18 @@ textarea:focus, input:focus{
 .unknow{
   background-color: #bfbfbf;
 }
+.dragon{
+  background-color: #2b7128;
+}
+.ghost{
+  background-color: #dcdcdc;
+}
+.steel{
+  background-color: #9a8978;
+}
+.ice{
+  background-color: #2bcbef;
+}
+.rock{
+  background-color: #4d4c4c;
+}

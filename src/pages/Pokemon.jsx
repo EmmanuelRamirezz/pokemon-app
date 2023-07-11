@@ -30,7 +30,7 @@ const Pokemon = () => {
           <Loader />
         ) : (
           <>
-            <div className="w-11/12 m-auto max-md:mt-28">
+            <div className="w-11/12 m-auto mt-36 max-md:mt-28">
               <div className="flex justify-evenly max-sm:flex-col gap-10">
                 <span className="text-[150px] text-blue-300 max-sm:mx-auto max-sm:text-7xl">
                   #{pokemon.id}
