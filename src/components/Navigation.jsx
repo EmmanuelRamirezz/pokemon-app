@@ -6,12 +6,19 @@ import { PokemonContext } from "../context/PokemonContext";
 const Navigation = () => {
   const { onInputChange, valueSearch, onResetForm, active, setActive } = useContext(PokemonContext)
 
+
+
   const navigate = useNavigate() //redirecciona a la pagina de search
 
   const [searchActive, setSearchActive] = useState(false)
 
   const onSearchSubmit = (event) => {
     event.preventDefault()
+    if(valueSearch==''){
+      alert('Ingrese un valor de busqueda valido')
+      return
+    }
+    
     navigate('/search', {
       state: valueSearch
     })
@@ -82,7 +89,6 @@ const Navigation = () => {
               className="w-72 h-9 pl-2 max-lg:w-36"
               type="search"
               name="valueSearch"
-              id=""
               placeholder="Buscar nombre de pokemon"
               value={valueSearch}
               onChange={onInputChange}
@@ -101,7 +107,6 @@ const Navigation = () => {
                 className="w-40 h-9 ml-4"
                 type="search"
                 name="valueSearch"
-                id=""
                 placeholder="Buscador"
                 value={valueSearch}
                 onChange={onInputChange}

@@ -21,8 +21,9 @@ const PokemonProvider = ({children}) => {
   //Creamos y utilizamos un custom hook
   const {valueSearch, onInputChange, onResetForm} = useForm ({
     valueSearch: '',
-  
   })
+  //verifica si estamos en search
+  const [onSearch, setOnSearch] = useState(false)
 
   //Funcion para llamar 50 pokemones a la api
   const getAllPokemons = async (limit = 50) => {
@@ -151,6 +152,9 @@ const PokemonProvider = ({children}) => {
       //vistas
       vista,
       setVista,
+      //verifica si estamos en search
+      onSearch,
+      setOnSearch,
 
 
       //el valor es un objeto (diccionario)

@@ -2,16 +2,14 @@ import { PokemonList, FilterBar } from "../components";
 import { useContext, useState } from "react";
 import { PokemonContext } from "../context/PokemonContext";
 
+
 const Home = () => {
-  const { onClickLoadMore,} = useContext(PokemonContext)
+  const { onClickLoadMore, setOnSearch, onSearchFunction} = useContext(PokemonContext)
+  //verifica si estamos en la pagina search o no
 
 
   return (
     <>
-
-
-
-
       <FilterBar/>
       <PokemonList />
 

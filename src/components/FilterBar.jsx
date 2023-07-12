@@ -3,8 +3,13 @@ import { PokemonContext } from "../context/PokemonContext";
 //import { setVisible, visible } from "../pages/Home";
 
 export const FilterBar = () => {
-  const { active, setActive, handleCheckBox, vista, setVista } = useContext(PokemonContext)
-  console.log(vista);
+  const { active, setActive, handleCheckBox, vista, setVista, onSearch, setOnSearch } = useContext(PokemonContext)
+  const ruta = window.location.href
+  if(ruta.includes('search')){
+    setOnSearch(true)
+  }else{
+    setOnSearch(false)
+  }
   return (
     <div className={`fixed flex left-0 top-0 h-full w-52 flex-col bg-gray-300 items-center overflow-auto scroll-m-1 invisible${active ? 'invisible' : ''}`}>
       <svg
@@ -32,7 +37,8 @@ export const FilterBar = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
         </svg>
       </div>
-      <div className="pl-4 gap-2 flex flex-col mb-10">
+
+      <div className={`pl-4 gap-2 flex flex-col mb-10 ${onSearch ? 'hidden' : ''}`}>
         <span className="font-bold mb-4 block">Filtrar por tipo</span>
         <div>
           <input type="checkbox" name="grass" id="grass" onChange={handleCheckBox} />
