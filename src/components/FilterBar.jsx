@@ -3,15 +3,16 @@ import { PokemonContext } from "../context/PokemonContext";
 //import { setVisible, visible } from "../pages/Home";
 
 export const FilterBar = () => {
-  const { active, setActive, handleCheckBox, vista, setVista, onSearch, setOnSearch } = useContext(PokemonContext)
-  const ruta = window.location.href
-  if(ruta.includes('search')){
-    setOnSearch(true)
-  }else{
-    setOnSearch(false)
-  }
+  const { active, setActive, handleCheckBox, vista, setVista, onSearch, setOnSearch, typeSelected, seleccion, setSeleccion } = useContext(PokemonContext)
+  // const ruta = window.location.href
+  // if(ruta.includes('search')){
+  //   setOnSearch(true)
+  // }else{
+  //   setOnSearch(false)
+  // }
   return (
     <div className={`fixed flex left-0 top-0 h-full w-52 flex-col bg-gray-300 items-center overflow-auto scroll-m-1 invisible${active ? 'invisible' : ''}`}>
+            {/* <button onClick={pruebaChecked} className="bg-black mx-auto mt-52">ver estado</button> */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -38,7 +39,7 @@ export const FilterBar = () => {
         </svg>
       </div>
 
-      <div className={`pl-4 gap-2 flex flex-col mb-10 ${onSearch ? 'hidden' : ''}`}>
+      <div className={`pl-4 gap-2 flex flex-col mb-10 ${window.location.href.includes('search') ? 'hidden' : ''}`}>
         <span className="font-bold mb-4 block">Filtrar por tipo</span>
         <div>
           <input type="checkbox" name="grass" id="grass" onChange={handleCheckBox} />

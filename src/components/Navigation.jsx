@@ -32,7 +32,8 @@ const Navigation = () => {
           <img src={pokemonLogo} alt="Pokemon Logo" className="w-44" />
         </Link>
 
-        <div className="flex items-center m-10 max-md:mx-auto hover:cursor-pointer hover:text-gray-400"
+        <div className={`flex items-center m-10 max-md:mx-auto hover:cursor-pointer hover:text-gray-400 ${window.location.href.includes('pokemon') ? 'visible' : ''}`}
+        
           onClick={() => setActive(!active)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

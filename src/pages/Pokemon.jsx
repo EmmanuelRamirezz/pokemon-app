@@ -1,17 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../context/PokemonContext";
 import { useParams } from "react-router-dom";
-import { Loader } from "../components/";
+import { Loader, FilterBar } from "../components/";
 import { primerMayuscula } from "../helpers/helpers";
 
 const Pokemon = () => {
-  const { getPokemonByID } = useContext(PokemonContext);
+  const { getPokemonByID, typeSelected, seleccion } = useContext(PokemonContext);
   const [loading, setLoading] = useState(true);
   const [pokemon, setPokemon] = useState({});
   const { id } = useParams(); //destructuracion del id
   //si la ruta es: pokemon/id entonces retorna el id en forma de objeto
   //se usa para acceder y modificar los parametros de la url
   //aquí usamos el id que viene en el url y lo usamos en el componente pokemon
+  // aquí voy
+  console.log(seleccion);
+  const tipo = document.getElementById(seleccion)
+  //tipo.checked=true
 
   const fetchPokemon = async (id) => {
     const data = await getPokemonByID(id);
@@ -22,7 +26,7 @@ const Pokemon = () => {
   useEffect(() => {
     fetchPokemon(id); //este id es el de useParams
   }, []);
-  console.log('loading is: '+loading) //cuando no carga es true
+  //cuando no carga es true
   return (
     <div>
       <main>
@@ -30,6 +34,7 @@ const Pokemon = () => {
           <Loader />
         ) : (
           <>
+                <FilterBar/>
             <div className="w-11/12 m-auto mt-36 max-md:mt-28">
               <div className="flex justify-evenly max-sm:flex-col gap-10">
                 <span className="text-[150px] text-blue-300 max-sm:mx-auto max-sm:text-7xl">
