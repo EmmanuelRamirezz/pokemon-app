@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
 import { PokemonContext } from "../context/PokemonContext";
-//import { setVisible, visible } from "../pages/Home";
 
-export const FilterBar = () => {
-  const { active, setActive, handleCheckBox, vista, setVista, onSearch, setOnSearch, typeSelected, seleccion, setSeleccion } = useContext(PokemonContext)
-  // const ruta = window.location.href
-  // if(ruta.includes('search')){
-  //   setOnSearch(true)
-  // }else{
-  //   setOnSearch(false)
-  // }
+
+export const FilterBar = ({onCheckboxChange, checkboxState}) => {
+  const { active, setActive, handleCheckBox, vista, setVista, onSearch, setOnSearch, typeSelected, seleccion, setSeleccion} = useContext(PokemonContext)
+  //logica para mantener los checkbox al cambiar de pagina
+  const handleCheckboxChange = event => {
+    const {name, checked} = event.target;
+    onCheckboxChange(name, checked)
+    handleCheckBox()
+  } 
   return (
     <div className={`fixed flex left-0 top-0 h-full w-52 flex-col bg-gray-300 items-center overflow-auto scroll-m-1 invisible${active ? 'invisible' : ''}`}>
             {/* <button onClick={pruebaChecked} className="bg-black mx-auto mt-52">ver estado</button> */}

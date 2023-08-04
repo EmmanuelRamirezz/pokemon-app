@@ -106,6 +106,8 @@ const PokemonProvider = ({children}) => {
 
   //Funciones para el filtro
   const [seleccion, setSeleccion] = useState('')
+  const tipo = document.getElementById(seleccion)
+
   //filtro
   const [typeSelected, setTypeSelected] = useState({
     grass: false,
@@ -130,7 +132,9 @@ const PokemonProvider = ({children}) => {
 		shadow: false,
   })
   const [filteredPokemons, setFilteredPokemons] = useState([])
+  //logica para mantener los checkbox al cambiar de pagina
 
+  //
   const handleCheckBox = (event) => {
     setTypeSelected({
       ...typeSelected, //lo esparsimos
@@ -142,7 +146,7 @@ const PokemonProvider = ({children}) => {
       const filteredResults = globalPokemons.filter(pokemon => pokemon.types.map(type => type.type.name).includes(event.target.name))
       
       setFilteredPokemons([...filteredPokemons, ...filteredResults]) //esparsimos ambos arreglos en 1, aplica los resultados en varios checkbox seleccionados a la vez
-      console.log(filteredResults);
+
     }else{
       const filteredResults = filteredPokemons.filter(pokemon => !pokemon.types.map(type => type.type.name).includes(event.target.name))   
       setFilteredPokemons([...filteredResults])
@@ -167,7 +171,6 @@ const PokemonProvider = ({children}) => {
       active,
       setActive,
       //filter functions
-      seleccion,
       setSeleccion,
       handleCheckBox,
       filteredPokemons,

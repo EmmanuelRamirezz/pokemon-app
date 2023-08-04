@@ -5,9 +5,17 @@ import { CardPokemonList } from "./CardPokemonList";
 import { Pagination } from "./Pagination";
 
 export const PokemonList = () => {
-  const { allPokemons, loading, filteredPokemons, vista, page, totalPages, lastPage, nextPage,} =
-    useContext(PokemonContext);
-      //Logica de paginacion
+  const {
+    allPokemons,
+    loading,
+    filteredPokemons,
+    vista,
+    page,
+    totalPages,
+    lastPage,
+    nextPage,
+  } = useContext(PokemonContext);
+  //Logica de paginacion
 
   return (
     <>
@@ -43,47 +51,41 @@ export const PokemonList = () => {
                     {allPokemons.map((pokemon) => (
                       <CardPokemonList key={pokemon.name} pokemon={pokemon} />
                     ))}
-                                                  <Pagination
-            page={page}
-            totalPages={totalPages}
-            onLeftClick={lastPage}
-            onRightClick={nextPage}
-          />
+                    <Pagination
+                      page={page}
+                      totalPages={totalPages}
+                      onLeftClick={lastPage}
+                      onRightClick={nextPage}
+                    />
                   </>
                 )}
               </section>
             </>
           ) : (
             <div>
-            <section className="grid grid-cols-4 grid-flow-row gap-10 w-3/4 mb-20 mx-auto mt-36 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:mt-36 max-xl:w-11/12">
-              {filteredPokemons.length ? (
-                <>
-                  {filteredPokemons.map((pokemon) => (
-                    <CardPokemon key={pokemon.id} pokemon={pokemon} />
-                  ))}
-                </>
-                
-              ) : (
-                <>
-                <Pagination
-            page={page}
-            totalPages={totalPages}
-            onLeftClick={lastPage}
-            onRightClick={nextPage}
-          />
-                  {allPokemons.map((pokemon) => (
-                    <CardPokemon key={pokemon.name} pokemon={pokemon} />
-                  ))}
-
-                </>
-                
-              )}
-            </section>
-            
+              <section className="grid grid-cols-4 grid-flow-row gap-10 w-3/4 mb-20 mx-auto mt-36 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:mt-36 max-xl:w-11/12">
+                {filteredPokemons.length ? (
+                  <>
+                    {filteredPokemons.map((pokemon) => (
+                      <CardPokemon key={pokemon.id} pokemon={pokemon} />
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    {allPokemons.map((pokemon) => (
+                      <CardPokemon key={pokemon.name} pokemon={pokemon} />
+                    ))}
+                    <Pagination
+                      page={page}
+                      totalPages={totalPages}
+                      onLeftClick={lastPage}
+                      onRightClick={nextPage}
+                    />
+                  </>
+                )}
+              </section>
             </div>
-
           )}
-
         </div>
       )}
     </>

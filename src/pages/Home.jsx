@@ -5,7 +5,7 @@ import { Pagination } from "../components/Pagination";
 
 
 const Home = () => {
-  const { onClickLoadMore, setOnSearch, onSearchFunction, } = useContext(PokemonContext)
+  const { onClickLoadMore, setOnSearch, onSearchFunction, seleccion} = useContext(PokemonContext)
   //verifica si estamos en la pagina search o no
 
 
@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       <FilterBar/>
-      <PokemonList />
+      <PokemonList/>
 
 
       {/* <div className="w-11/12 flex justify-center my-10 mx-auto">
